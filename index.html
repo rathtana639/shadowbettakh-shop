@@ -1,0 +1,1638 @@
+    <!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ផ្ទះលក់ត្រីក្រឹម Shadow Betta</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --highlight: #f39c12;
+            --success: #27ae60;
+            --water-blue: #3498db;
+            --accent: #9b59b6;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans Khmer', 'Arial', sans-serif;
+            color: var(--dark);
+            background: linear-gradient(to bottom, #e6f7ff, #f9f9f9);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,10 100,0 L100,100 Q50,90 0,100 Z" fill="rgba(52, 152, 219, 0.05)"/></svg>');
+            background-size: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, var(--highlight), #d35400);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
+        }
+        
+        .brand-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+        }
+        
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info i {
+            margin-right: 5px;
+            color: var(--highlight);
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background: linear-gradient(90deg, var(--secondary), #c0392b);
+            padding: 0.8rem;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1rem;
+        }
+        
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-menu li a:hover, 
+        .nav-menu li a.active {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3') center/cover;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .btn {
+            background-color: var(--highlight);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            animation: none;
+        }
+        
+        /* Main Content Styles */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            color: var(--primary);
+            border-bottom: 3px solid var(--highlight);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title i {
+            color: var(--secondary);
+        }
+        
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            margin: 2rem 0;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .slider-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .slider-controls button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Noto Sans Khmer';
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .slider-controls button:hover {
+            background-color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .slider-content {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .slider-content::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+        
+        .slider-item {
+            min-width: 280px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: var(--transition);
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .slider-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        
+        .discount-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .slider-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .slider-item:hover .slider-img {
+            transform: scale(1.05);
+        }
+        
+        .slider-info {
+            padding: 1.2rem;
+        }
+        
+        .slider-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        
+        .slider-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0.5rem;
+        }
+        
+        .current-price {
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: var(--highlight);
+            margin: 5px 0;
+            display: flex;
+            gap: 2px;
+        }
+        
+        .rating i {
+            transition: all 0.2s ease;
+        }
+        
+        /* Categories Section */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .category-title {
+            padding: 1rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Detail View */
+        .detail-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        
+        .detail-content {
+            background-color: white;
+            max-width: 900px;
+            margin: 2rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.4);
+            animation: slideUp 0.4s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--dark));
+            color: white;
+        }
+        
+        .detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .detail-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .detail-body {
+            display: flex;
+            padding: 1.5rem;
+        }
+        
+        .detail-left {
+            flex: 1;
+            padding-right: 1.5rem;
+        }
+        
+        .detail-right {
+            flex: 1;
+            border-left: 1px solid #eee;
+            padding-left: 1.5rem;
+        }
+        
+        .detail-img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .detail-name {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .detail-price {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .detail-original-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1.4rem;
+        }
+        
+        .detail-rating {
+            color: var(--highlight);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 2px;
+        }
+        
+        .detail-desc {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .detail-meta-item {
+            background-color: #f5f5f5;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .detail-meta-item i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        
+        .btn-cart {
+            background-color: var(--success);
+            flex: 2;
+        }
+        
+        .btn-wishlist {
+            background-color: #9b59b6;
+            flex: 1;
+        }
+        
+        .btn-cart:hover {
+            background-color: #219653;
+        }
+        
+        .btn-wishlist:hover {
+            background-color: #8e44ad;
+        }
+        
+        /* Order Form */
+        .order-form {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .order-form h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--highlight);
+            padding-bottom: 0.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Noto Sans Khmer';
+        }
+        
+        .form-group textarea {
+            height: 100px;
+        }
+        
+        .btn-submit {
+            background-color: var(--water-blue);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: var(--transition);
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Confirmation Message */
+        .confirmation {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+            background-color: #e8f4e8;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border: 1px solid #2ecc71;
+        }
+        
+        .confirmation i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            display: flex;
+            gap: 2rem;
+            margin: 3rem 0;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .telegram-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0088cc;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            margin-top: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .telegram-contact:hover {
+            background-color: #006699;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--water-blue);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #111);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            border-bottom: 2px solid var(--highlight);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--highlight);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--highlight);
+            transform: translateY(-5px);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.7rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Noto Sans Khmer';
+        }
+        
+        .newsletter-form button {
+            background-color: var(--highlight);
+            color: white;
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #e67e22;
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .detail-body {
+                flex-direction: column;
+            }
+            
+            .detail-left, .detail-right {
+                padding: 0;
+                border-left: none;
+                border-top: 1px solid #eee;
+                padding-top: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+                top: 0;
+            }
+            
+            .contact-info {
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+            
+            nav {
+                top: 140px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .hero {
+                height: 350px;
+                margin-top: 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-section {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            
+            .slider-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Brand -->
+    <header>
+    <div class="logo-brand">
+        <div class="logo">SB</div>
+        <div class="brand-name">ផ្ទះលក់ត្រីក្រឹម Shadow Betta</div>
+    </div>
+        <div class="contact-info">
+            <div><i class="fas fa-phone"></i> +855 15 988 958 / +855 61 793 139</div>
+            <div><i class="fas fa-envelope"></i> Rorathtana639@gmail.com</div>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav-menu">
+            <li><a class="nav-link active" data-target="home"><i class="fas fa-home"></i> ទំព័រដើម</a></li>
+            <li><a class="nav-link" data-target="wild"><i class="fas fa-tree"></i> ត្រីក្រឹមព្រៃ</a></li>
+            <li><a class="nav-link" data-target="ornamental"><i class="fas fa-palette"></i> ត្រីក្រឹមលម្អ</a></li>
+            <li><a class="nav-link" data-target="fighting"><i class="fas fa-fist-raised"></i> ត្រីក្រឹមជល់</a></li>
+            <li><a class="nav-link" data-target="others"><i class="fas fa-fish"></i> ផ្សេងៗ</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>ត្រីក្រឹមគុណភាពខ្ពស់ តម្លៃសមរម្យ</h1>
+        <p>ផ្តល់នូវត្រីក្រឹមដ៏ស្រស់ស្អាត និងសម្ភារៈគ្រប់គ្រាន់សម្រាប់ការចិញ្ចឹមត្រីក្រឹមរបស់អ្នក</p>
+        <a href="#wild" class="btn">ទិញឥឡូវនេះ</a>
+    </div>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <!-- Categories Section -->
+            <div class="categories">
+                <div class="category-card" data-target="wild">
+                    <img src="https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3" alt="Wild Betta" class="category-img">
+                    <div class="category-title">ត្រីក្រឹមព្រៃ</div>
+                </div>
+                <div class="category-card" data-target="ornamental">
+                    <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3" alt="Ornamental Betta" class="category-img">
+                    <div class="category-title">ត្រីក្រឹមលម្អ</div>
+                </div>
+                <div class="category-card" data-target="fighting">
+                    <img src="https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3" alt="Fighting Betta" class="category-img">
+                    <div class="category-title">ត្រីក្រឹមជល់</div>
+                </div>
+                <div class="category-card" data-target="others">
+                    <img src="https://images.unsplash.com/photo-1550856494-a54af5b6e4a6?ixlib=rb-4.0.3" alt="Accessories" class="category-img">
+                    <div class="category-title">សម្ភារៈផ្សេងៗ</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title"><i class="fas fa-star"></i> ត្រីក្រឹមថ្មីៗ</h2>
+            <div class="slider-container">
+                <div class="slider-header">
+                    <h3>ត្រីក្រឹមដែលទើបតែមកដល់</h3>
+                    <div class="slider-controls">
+                        <button id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                        <button id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="slider-content" id="recentSlider">
+                    <!-- Items will be added by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="about-section">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3" alt="About Shadow Betta">
+                </div>
+                <div class="about-content">
+                    <h2>អំពីហាងយើងខ្ញុំ</h2>
+                    <p>ផ្ទះលក់ត្រីក្រឹម Shadow Betta គឺជាអ្នកផ្តល់ត្រីក្រឹមដ៏ធំជាងគេនៅកម្ពុជា។ យើងខ្ញុំមានបទពិសោធន៍ជាង ១០ឆ្នាំក្នុងការចិញ្ចឹម និងផ្គត់ផ្គង់ត្រីក្រឹមគុណភាពខ្ពស់។</p>
+                    <p>យើងខ្ញុំផ្តល់នូវសេវាកម្មដល់អតិថិជនដោយគោរពតម្លៃ និងភាពជឿជាក់។ គ្រប់ត្រីក្រឹមទាំងអស់ត្រូវបានថែរក្សាដោយអ្នកជំនាញ និងមានសុខភាពល្អ។</p>
+                    
+                    <!-- Telegram Contact -->
+                    <a href="https://t.me/+UCGkrL_UKXM5MzY1" class="telegram-contact" target="_blank">
+                        <i class="fab fa-telegram-plane"></i>
+                        ចូលរួមក្រុម Telegram របស់យើង
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h2 class="section-title"><i class="fas fa-phone"></i> ទំនាក់ទំនងជាមួយយើង</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>អាសយដ្ឋាន</h3>
+                        <p>ផ្ទះលក់ត្រីក្រឹម Shadowbetta, NR 4, Kandal 080101</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>លេខទូរស័ព្ទ</h3>
+                        <p>+855 15 988 958</p>
+                        <p>+855 61 793 139</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>អ៊ីមែល</h3>
+                        <p>Rorathtana639@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Wild Betta Section -->
+        <section id="wild" class="content-section">
+            <h2 class="section-title"><i class="fas fa-tree"></i> ត្រីក្រឹមព្រៃ</h2>
+            <div class="slider-container">
+                <div class="slider-content" id="wildSlider">
+                    <!-- Items will be added by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Ornamental Betta Section -->
+        <section id="ornamental" class="content-section">
+            <h2 class="section-title"><i class="fas fa-palette"></i> ត្រីក្រឹមលម្អ</h2>
+            <div class="slider-container">
+                <div class="slider-content" id="ornamentalSlider">
+                    <!-- Items will be added by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Fighting Betta Section -->
+        <section id="fighting" class="content-section">
+            <h2 class="section-title"><i class="fas fa-fist-raised"></i> ត្រីក្រឹមជល់</h2>
+            <div class="slider-container">
+                <div class="slider-content" id="fightingSlider">
+                    <!-- Items will be added by JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Others Section -->
+        <section id="others" class="content-section">
+            <h2 class="section-title"><i class="fas fa-fish"></i> ផ្សេងៗ</h2>
+            <div class="slider-container">
+                <div class="slider-content" id="othersSlider">
+                    <!-- Items will be added by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Detail View with Order Form -->
+    <div class="detail-view" id="detailView">
+        <div class="detail-content">
+            <div class="detail-header">
+                <h3 id="detailTitle">ព័ត៌មានលម្អិត</h3>
+                <button class="detail-close" id="detailClose">&times;</button>
+            </div>
+            <div class="detail-body">
+                <div class="detail-left">
+                    <img id="detailImage" src="" alt="" class="detail-img">
+                    <div class="detail-meta">
+                        <div class="detail-meta-item"><i class="fas fa-tag"></i> ប្រភេទ: <span id="detailType"></span></div>
+                        <div class="detail-meta-item"><i class="fas fa-ruler"></i> ទំហំ: <span id="detailSize"></span></div>
+                        <div class="detail-meta-item"><i class="fas fa-birthday-cake"></i> អាយុ: <span id="detailAge"></span></div>
+                    </div>
+                </div>
+                <div class="detail-right">
+                    <h2 id="detailName" class="detail-name">ឈ្មោះត្រីក្រឹម</h2>
+                    <div class="detail-rating" id="productRating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span id="reviewCount">(12 reviews)</span>
+                    </div>
+                    <div class="detail-price">
+                        <span id="detailPrice" class="current-price">$0.00</span>
+                        <span id="detailOriginalPrice" class="detail-original-price">$0.00</span>
+                    </div>
+                    <p id="detailDesc" class="detail-desc">ព័ត៌មានលម្អិតអំពីត្រីក្រឹមនេះ។</p>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-cart" id="orderBtn"><i class="fas fa-shopping-cart"></i> បញ្ជាទិញ</button>
+                        <button class="btn btn-wishlist" id="likeBtn"><i class="fas fa-heart"></i> ចូលចិត្ត</button>
+                    </div>
+                    
+                    <!-- Order Form -->
+                    <div class="order-form" id="orderForm" style="display:none;">
+                        <h3><i class="fas fa-edit"></i> បំពេញព័ត៌មានដើម្បីបញ្ជាទិញ</h3>
+                        <form id="customerForm">
+                            <div class="form-group">
+                                <label for="customerName"><i class="fas fa-user"></i> ឈ្មោះពេញ</label>
+                                <input type="text" id="customerName" required placeholder="បញ្ចូលឈ្មោះពេញរបស់អ្នក">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-phone"></i> លេខទូរស័ព្ទ</label>
+                                <input type="tel" id="phone" required placeholder="បញ្ចូលលេខទូរស័ព្ទរបស់អ្នក">
+                            </div>
+                            <div class="form-group">
+                                <label for="address"><i class="fas fa-map-marker-alt"></i> អាស័យដ្ឋានបច្ចុប្បន្ន</label>
+                                <textarea id="address" required placeholder="បញ្ចូលអាស័យដ្ឋានដើម្បីដឹកជញ្ជូន"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity"><i class="fas fa-fish"></i> ចំនួនត្រីក្រឹមដែលចង់ទិញ</label>
+                                <input type="number" id="quantity" min="1" value="1" required>
+                            </div>
+                            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> ផ្ញើព័ត៌មានទៅ Telegram</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Confirmation Message -->
+                    <div class="confirmation" id="confirmation" style="display:none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>ការបញ្ជាទិញជោគជ័យ!</h3>
+                        <p>ព័ត៌មានការបញ្ជាទិញរបស់អ្នកត្រូវបានផ្ញើទៅកាន់ Telegram រួចរាល់។</p>
+                        <p>យើងនឹងទាក់ទងទៅកាន់អ្នកឆាប់ៗនេះ!</p>
+                        <button class="btn" id="continueBtn">បន្តទិញ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>អំពីយើង</h3>
+                <p>ផ្ទះលក់ត្រីក្រឹម Shadow Betta ជាកន្លែងទិញត្រីក្រឹមដ៏គុណភាពនៅកម្ពុជា។ យើងផ្តល់ជូននូវត្រីក្រឹមសុខភាពល្អ និងសម្ភារៈគ្រប់គ្រាន់សម្រាប់ការចិញ្ចឹម។</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/16NMAc6Jnc/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@shadowbettakh?_t=ZP-8xAoDAVWHC2&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://youtube.com/@shadowbetta?si=8LldiTSnnEvHdlUV" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>តំណភ្ជាប់</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-target="home"><i class="fas fa-chevron-right"></i> ទំព័រដើម</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> អំពីយើង</a></li>
+                    <li><a href="#" data-target="wild"><i class="fas fa-chevron-right"></i> ត្រីក្រឹមព្រៃ</a></li>
+                    <li><a href="#" data-target="ornamental"><i class="fas fa-chevron-right"></i> ត្រីក្រឹមលម្អ</a></li>
+                    <li><a href="#" data-target="fighting"><i class="fas fa-chevron-right"></i> ត្រីក្រឹមជល់</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>ទំនាក់ទំនង</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> ផ្ទះលក់ត្រីក្រឹម Shadowbetta, NR 4, Kandal 080101</a></li>
+                    <li><a href="tel:+85515988958"><i class="fas fa-phone"></i> +855 15 988 958</a></li>
+                    <li><a href="tel:+85561793139"><i class="fas fa-phone"></i> +855 61 793 139</a></li>
+                    <li><a href="mailto:Rorathtana639@gmail.com"><i class="fas fa-envelope"></i> Rorathtana639@gmail.com</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> ច័ន្ទ-សៅរ៍: 8AM-6PM</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> អាទិត្យ: 9AM-3PM</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>ព័ត៌មានថ្មី</h3>
+                <p>ចុះឈ្មោះដើម្បីទទួលបានព័ត៌មានថ្មីៗ និងការបញ្ចុះតម្លៃពិសេស។</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="អ៊ីមែលរបស់អ្នក...">
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ផ្ទះលក់ត្រីក្រឹម Shadow Betta. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Telegram bot configuration
+        const BOT_TOKEN = "7820816420:AAHDFeKWNBu_c2A7rmtFe4tCeS5aXsXcB8s";
+        const CHAT_ID = "-1002123576124"; // Group chat ID
+        
+        // Enhanced sample data for fish items
+        const fishData = {
+            recent: [
+                { id: 1, name: "ត្រីក្រឹមព្រៃខៀវសម្បូរ", price: "$15.00", originalPrice: "$18.00", desc: "ត្រីក្រឹមព្រៃពណ៌ខៀវស្រស់បំព្រង មានដើមកំណើតពីព្រៃភ្នំកម្ពុជា", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "wild", size: "5-6cm", age: "3 ខែ", discount: "15%", rating: 4.5, reviews: 12 },
+                { id: 2, name: "ត្រីក្រឹមលម្អក្រហមភ្លឺ", price: "$25.00", originalPrice: "$30.00", desc: "ត្រីក្រឹមលម្អពណ៌ក្រហមចាប់អារម្មណ៍ សម្រាប់តុការងារ", image: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3", type: "ornamental", size: "6-7cm", age: "4 ខែ", discount: "10%", rating: 4.2, reviews: 8 },
+                { id: 3, name: "ត្រីក្រឹមជល់ខ្មៅរឹងមាំ", price: "$30.00", desc: "ត្រីក្រឹមជល់ពណ៌ខ្មៅដ៏រឹងមាំ មានសាច់ឈាមយក្ស", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "fighting", size: "7-8cm", age: "5 ខែ", rating: 4.7, reviews: 15 },
+                { id: 4, name: "សំណាញ់ត្រីក្រឹមគុណភាពខ្ពស់", price: "$10.00", originalPrice: "$12.00", desc: "សំណាញ់គុណភាពខ្ពស់សម្រាប់ត្រីក្រឹម", image: "https://images.unsplash.com/photo-1550856494-a54af5b6e4a6?ixlib=rb-4.0.3", type: "others", discount: "20%", rating: 4.0, reviews: 5 },
+                { id: 5, name: "ត្រីក្រឹមព្រៃបៃតងភ្លឺ", price: "$18.00", desc: "ត្រីក្រឹមព្រៃពណ៌បៃតងភ្លឺ មានសភាពរឹងមាំ", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "wild", size: "5-6cm", age: "3 ខែ", rating: 4.3, reviews: 9 },
+                { id: 6, name: "ត្រីក្រឹមលម្អមាសភ្លឺ", price: "$35.00", originalPrice: "$40.00", desc: "ត្រីក្រឹមលម្អពណ៌មាសភ្លឺចិញ្ចែង សម្រាប់តុការងារ", image: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3", type: "ornamental", size: "6-7cm", age: "4 ខែ", discount: "12%", rating: 4.8, reviews: 18 }
+            ],
+            wild: [
+                { id: 1, name: "ត្រីក្រឹមព្រៃខៀវសម្បូរ", price: "$15.00", originalPrice: "$18.00", desc: "ត្រីក្រឹមព្រៃពណ៌ខៀវស្រស់បំព្រង មានដើមកំណើតពីព្រៃភ្នំកម្ពុជា", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "wild", size: "5-6cm", age: "3 ខែ", discount: "15%", rating: 4.5, reviews: 12 },
+                { id: 5, name: "ត្រីក្រឹមព្រៃបៃតងភ្លឺ", price: "$18.00", desc: "ត្រីក្រឹមព្រៃពណ៌បៃតងភ្លឺ មានសភាពរឹងមាំ", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "wild", size: "5-6cm", age: "3 ខែ", rating: 4.3, reviews: 9 },
+                { id: 7, name: "ត្រីក្រឹមព្រៃខ្មៅភ្លឺ", price: "$20.00", desc: "ត្រីក្រឹមព្រៃពណ៌ខ្មៅដ៏កម្រនៅព្រៃភ្នំកម្ពុជា", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "wild", size: "6-7cm", age: "4 ខែ", rating: 4.6, reviews: 11 },
+                { id: 8, name: "ត្រីក្រឹមព្រៃក្រហម", price: "$22.00", originalPrice: "$25.00", desc: "ត្រីក្រឹមព្រៃពណ៌ក្រហមឈាម មានភាពក្លាហាន", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "wild", size: "5-6cm", age: "3 ខែ", discount: "12%", rating: 4.4, reviews: 7 }
+            ],
+            ornamental: [
+                { id: 2, name: "ត្រីក្រឹមលម្អក្រហមភ្លឺ", price: "$25.00", originalPrice: "$30.00", desc: "ត្រីក្រឹមលម្អពណ៌ក្រហមចាប់អារ�ម្មណ៍ សម្រាប់តុការងារ", image: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3", type: "ornamental", size: "6-7cm", age: "4 ខែ", discount: "10%", rating: 4.2, reviews: 8 },
+                { id: 6, name: "ត្រីក្រឹមលម្អមាសភ្លឺ", price: "$35.00", originalPrice: "$40.00", desc: "ត្រីក្រឹមលម្អពណ៌មាសភ្លឺចិញ្ចែង សម្រាប់តុការងារ", image: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3", type: "ornamental", size: "6-7cm", age: "4 ខែ", discount: "12%", rating: 4.8, reviews: 18 },
+                { id: 9, name: "ត្រីក្រឹមលម្អពណ៌សស្អាត", price: "$22.00", desc: "ត្រីក្រឹមលម្អពណ៌សស្អាត សម្រាប់ផ្ទះល្វែង", image: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3", type: "ornamental", size: "5-6cm", age: "3 ខែ", rating: 4.1, reviews: 6 },
+                { id: 10, name: "ត្រីក្រឹមលម្អពហុពណ៌", price: "$30.00", originalPrice: "$35.00", desc: "ត្រីក្រឹមលម្អពហុពណ៌ស្រស់ស្អាត បន្ថែមពណ៌សំរុយអោយផ្ទះអ្នក", image: "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-4.0.3", type: "ornamental", size: "7-8cm", age: "5 ខែ", discount: "14%", rating: 4.7, reviews: 14 }
+            ],
+            fighting: [
+                { id: 3, name: "ត្រីក្រឹមជល់ខ្មៅរឹងមាំ", price: "$30.00", desc: "ត្រីក្រឹមជល់ពណ៌ខ្មៅដ៏រឹងមាំ មានសាច់ឈាមយក្ស", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "fighting", size: "7-8cm", age: "5 ខែ", rating: 4.7, reviews: 15 },
+                { id: 11, name: "ត្រីក្រឹមជល់ក្រហមឈាម", price: "$35.00", desc: "ត្រីក្រឹមជល់ពណ៌ក្រហមឈាម មានសំពាធខ្លាំង", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "fighting", size: "7-8cm", age: "6 ខែ", rating: 4.9, reviews: 20 },
+                { id: 12, name: "ត្រីក្រឹមជល់មាសកម្លាំង", price: "$40.00", desc: "ត្រីក្រឹមជល់ពណ៌មាសដ៏កម្រនៅតំបន់អាស៊ី", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "fighting", size: "8-9cm", age: "6 ខែ", rating: 5.0, reviews: 25 },
+                { id: 13, name: "ត្រីក្រឹមជល់ខៀវរឹងមាំ", price: "$32.00", originalPrice: "$38.00", desc: "ត្រីក្រឹមជល់ពណ៌ខៀវរឹងមាំ មានល្បឿនលឿន", image: "https://images.unsplash.com/photo-1583692712974-34b3a507cb62?ixlib=rb-4.0.3", type: "fighting", size: "7-8cm", age: "5 ខែ", discount: "15%", rating: 4.6, reviews: 13 }
+            ],
+            others: [
+                { id: 4, name: "សំណាញ់ត្រីក្រឹមគុណភាពខ្ពស់", price: "$10.00", originalPrice: "$12.00", desc: "សំណាញ់គុណភាពខ្ពស់សម្រាប់ត្រីក្រឹម", image: "https://images.unsplash.com/photo-1550856494-a54af5b6e4a6?ixlib=rb-4.0.3", type: "others", discount: "20%", rating: 4.0, reviews: 5 },
+                { id: 14, name: "សារធាតុចិញ្ចឹមពេញលក្ខណៈ", price: "$8.00", desc: "សារធាតុចិញ្ចឹមពេញលក្ខណៈសម្រាប់ត្រីក្រឹម", image: "https://images.unsplash.com/photo-1550856494-a54af5b6e4a6?ixlib=rb-4.0.3", type: "others", rating: 3.8, reviews: 4 },
+                { id: 15, name: "អាងត្រីក្រឹមស្តង់ដារ", price: "$25.00", originalPrice: "$30.00", desc: "អាងត្រីសម្រាប់ត្រីក្រឹមគុណភាពខ្ពស់", image: "https://images.unsplash.com/photo-1550856494-a54af5b6e4a6?ixlib=rb-4.0.3", type: "others", discount: "17%", rating: 4.5, reviews: 10 },
+                { id: 16, name: "ថ្នាំព្យាបាលជំងឺត្រីក្រឹម", price: "$12.00", desc: "ថ្នាំព្យាបាលជំងឺសម្រាប់ត្រីក្រឹម", image: "https://images.unsplash.com/photo-1550856494-a54af5b6e4a6?ixlib=rb-4.0.3", type: "others", rating: 4.2, reviews: 7 }
+            ]
+        };
+
+        // DOM Elements
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        const detailView = document.getElementById('detailView');
+        const detailClose = document.getElementById('detailClose');
+        const sliders = {
+            recent: document.getElementById('recentSlider'),
+            wild: document.getElementById('wildSlider'),
+            ornamental: document.getElementById('ornamentalSlider'),
+            fighting: document.getElementById('fightingSlider'),
+            others: document.getElementById('othersSlider')
+        };
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const footerLinks = document.querySelectorAll('.footer-links a[data-target]');
+        const orderBtn = document.getElementById('orderBtn');
+        const likeBtn = document.getElementById('likeBtn');
+        const customerForm = document.getElementById('customerForm');
+        const orderForm = document.getElementById('orderForm');
+        const confirmation = document.getElementById('confirmation');
+        const continueBtn = document.getElementById('continueBtn');
+        const productRating = document.getElementById('productRating');
+        const reviewCount = document.getElementById('reviewCount');
+
+        // Current selected product
+        let currentProduct = null;
+        let ratings = JSON.parse(localStorage.getItem('productRatings')) || {};
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load all sliders with data
+            loadSlider('recent', fishData.recent);
+            loadSlider('wild', fishData.wild);
+            loadSlider('ornamental', fishData.ornamental);
+            loadSlider('fighting', fishData.fighting);
+            loadSlider('others', fishData.others);
+
+            // Set up navigation
+            setupNavigation();
+            
+            // Set up slider controls
+            setupSliderControls();
+            
+            // Set up detail view close button
+            detailClose.addEventListener('click', closeDetailView);
+            
+            // Set up category cards
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    navigateToSection(target);
+                });
+            });
+            
+            // Set up footer links
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('data-target');
+                    navigateToSection(target);
+                });
+            });
+            
+            // Set up order button
+            orderBtn.addEventListener('click', function() {
+                orderForm.style.display = 'block';
+                this.style.display = 'none';
+            });
+            
+            // Set up like button
+            likeBtn.addEventListener('click', function() {
+                rateProduct(currentProduct.id);
+            });
+            
+            // Set up form submission
+            customerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                sendOrderToTelegram();
+            });
+            
+            // Set up continue shopping button
+            continueBtn.addEventListener('click', function() {
+                confirmation.style.display = 'none';
+                orderForm.style.display = 'none';
+                orderBtn.style.display = 'block';
+                closeDetailView();
+            });
+        });
+
+        // Navigate to section
+        function navigateToSection(target) {
+            navLinks.forEach(link => link.classList.remove('active'));
+            contentSections.forEach(section => section.classList.remove('active'));
+            
+            document.querySelector(`.nav-link[data-target="${target}"]`).classList.add('active');
+            document.getElementById(target).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Load items into a slider
+        function loadSlider(sliderId, items) {
+            const slider = sliders[sliderId];
+            slider.innerHTML = '';
+            
+            items.forEach(item => {
+                const sliderItem = document.createElement('div');
+                sliderItem.className = 'slider-item';
+                
+                let discountTag = '';
+                if (item.discount) {
+                    discountTag = `<div class="discount-tag">-${item.discount}</div>`;
+                }
+                
+                let originalPrice = '';
+                if (item.originalPrice) {
+                    originalPrice = `<span class="original-price">${item.originalPrice}</span>`;
+                }
+                
+                // Get saved rating or use default
+                const savedRating = ratings[item.id] || item;
+                
+                // Create rating stars
+                let ratingStars = '<div class="rating">';
+                const ratingValue = savedRating.rating || 4;
+                const reviewCount = savedRating.reviews || item.reviews;
+                
+                // Calculate full and half stars
+                const fullStars = Math.floor(ratingValue);
+                const halfStar = ratingValue % 1 >= 0.5 ? 1 : 0;
+                const emptyStars = 5 - fullStars - halfStar;
+                
+                // Add full stars
+                for (let i = 0; i < fullStars; i++) {
+                    ratingStars += '<i class="fas fa-star"></i>';
+                }
+                
+                // Add half star
+                if (halfStar) {
+                    ratingStars += '<i class="fas fa-star-half-alt"></i>';
+                }
+                
+                // Add empty stars
+                for (let i = 0; i < emptyStars; i++) {
+                    ratingStars += '<i class="far fa-star"></i>';
+                }
+                
+                ratingStars += ` <span>(${reviewCount})</span></div>`;
+                
+                sliderItem.innerHTML = `
+                    ${discountTag}
+                    <img src="${item.image}" alt="${item.name}" class="slider-img">
+                    <div class="slider-info">
+                        <div class="slider-name">${item.name}</div>
+                        ${ratingStars}
+                        <div class="slider-price">
+                            <span class="current-price">${item.price}</span>
+                            ${originalPrice}
+                        </div>
+                    </div>
+                `;
+                
+                // Add click event to show details
+                sliderItem.addEventListener('click', () => showDetail(item));
+                
+                slider.appendChild(sliderItem);
+            });
+        }
+
+        // Set up navigation between sections
+        function setupNavigation() {
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and sections
+                    navLinks.forEach(el => el.classList.remove('active'));
+                    contentSections.forEach(el => el.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding section
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Set up slider navigation buttons
+        function setupSliderControls() {
+            // Next button scrolls right
+            nextBtn.addEventListener('click', () => {
+                sliders.recent.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+            
+            // Previous button scrolls left
+            prevBtn.addEventListener('click', () => {
+                sliders.recent.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+        }
+
+        // Show detail view for an item
+        function showDetail(item) {
+            currentProduct = item;
+            
+            document.getElementById('detailTitle').textContent = item.name;
+            document.getElementById('detailImage').src = item.image;
+            document.getElementById('detailImage').alt = item.name;
+            document.getElementById('detailName').textContent = item.name;
+            document.getElementById('detailPrice').textContent = item.price;
+            document.getElementById('detailType').textContent = item.type;
+            document.getElementById('detailSize').textContent = item.size || 'N/A';
+            document.getElementById('detailAge').textContent = item.age || 'N/A';
+            document.getElementById('detailDesc').textContent = item.desc;
+            
+            // Set original price if available
+            if (item.originalPrice) {
+                document.getElementById('detailOriginalPrice').textContent = item.originalPrice;
+                document.getElementById('detailOriginalPrice').style.display = 'inline';
+            } else {
+                document.getElementById('detailOriginalPrice').style.display = 'none';
+            }
+            
+            // Reset form and messages
+            orderForm.style.display = 'none';
+            confirmation.style.display = 'none';
+            orderBtn.style.display = 'block';
+            
+            // Display rating
+            updateRatingDisplay(item.id);
+            
+            detailView.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        // Update rating display
+        function updateRatingDisplay(productId) {
+            const savedRating = ratings[productId] || currentProduct;
+            const ratingValue = savedRating.rating || 4;
+            const reviewsCount = savedRating.reviews || currentProduct.reviews;
+            
+            // Clear current rating display
+            productRating.innerHTML = '';
+            
+            // Calculate full and half stars
+            const fullStars = Math.floor(ratingValue);
+            const halfStar = ratingValue % 1 >= 0.5 ? 1 : 0;
+            const emptyStars = 5 - fullStars - halfStar;
+            
+            // Add full stars
+            for (let i = 0; i < fullStars; i++) {
+                productRating.innerHTML += '<i class="fas fa-star"></i>';
+            }
+            
+            // Add half star
+            if (halfStar) {
+                productRating.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            // Add empty stars
+            for (let i = 0; i < emptyStars; i++) {
+                productRating.innerHTML += '<i class="far fa-star"></i>';
+            }
+            
+            // Add review count
+            productRating.innerHTML += `<span>(${reviewsCount})</span>`;
+            reviewCount.textContent = `(${reviewsCount})`;
+        }
+
+        // Close detail view
+        function closeDetailView() {
+            detailView.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Rate a product
+        function rateProduct(productId) {
+            // Get the current product data
+            const product = fishData.recent.concat(fishData.wild, fishData.ornamental, fishData.fighting, fishData.others)
+                .find(p => p.id === productId);
+            
+            // Get saved rating or initialize
+            const savedRating = ratings[productId] || {...product};
+            
+            // Update rating
+            if (!savedRating.rating) savedRating.rating = product.rating;
+            if (!savedRating.reviews) savedRating.reviews = product.reviews;
+            
+            // Add a rating (increment by 0.1 for each like, max 5)
+            savedRating.rating = Math.min(savedRating.rating + 0.1, 5);
+            savedRating.reviews += 1;
+            
+            // Save to ratings object
+            ratings[productId] = savedRating;
+            
+            // Save to localStorage
+            localStorage.setItem('productRatings', JSON.stringify(ratings));
+            
+            // Update display
+            updateRatingDisplay(productId);
+            
+            // Show animation on like button
+            likeBtn.innerHTML = '<i class="fas fa-heart"></i> អ្នកចូលចិត្តរួចហើយ!';
+            likeBtn.style.backgroundColor = '#e74c3c';
+            
+            setTimeout(() => {
+                likeBtn.innerHTML = '<i class="fas fa-heart"></i> ចូលចិត្ត';
+                likeBtn.style.backgroundColor = '';
+            }, 2000);
+        }
+        
+        // Send order to Telegram (FIXED VERSION)
+        async function sendOrderToTelegram() {
+            const customerName = document.getElementById('customerName').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const quantity = document.getElementById('quantity').value;
+            
+            // Create the message with HTML formatting
+            const message = `
+<b>🛒 ការបញ្ជាទិញថ្មី ពី Shadow Betta!</b>
+
+<b>🐠 ឈ្មោះត្រីក្រឹម:</b> ${escapeHtml(currentProduct.name)}
+<b>💰 តម្លៃ:</b> ${escapeHtml(currentProduct.price)}
+<b>🔢 ចំនួន:</b> ${escapeHtml(quantity)}
+
+<b>👤 ព័ត៌មានអតិថិជន:</b>
+<b>ឈ្មោះពេញ:</b> ${escapeHtml(customerName)}
+<b>ទូរស័ព្ទ:</b> ${escapeHtml(phone)}
+<b>អាស័យដ្ឋាន:</b> ${escapeHtml(address)}
+
+⏱️ <i>សូមទាក់ទងអតិថិជនឆាប់ៗនេះ!</i>`;
+            
+            try {
+                // Using a proxy to bypass CORS
+                const proxyUrl = 'https://corsproxy.io/?';
+                const apiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+                const url = proxyUrl + encodeURIComponent(apiUrl);
+                
+                // Send message to Telegram via proxy
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                if (response.ok) {
+                    // Show success message
+                    orderForm.style.display = 'none';
+                    confirmation.style.display = 'block';
+                    
+                    // Reset form
+                    customerForm.reset();
+                } else {
+                    // Show error message
+                    const errorData = await response.json();
+                    console.error('Telegram API Error:', errorData);
+                    alert('ការផ្ញើទិន្នន័យមិនបានជោគជ័យ! សូមព្យាយាមម្តងទៀត។ កូដកំហុស: ' + errorData.description);
+                }
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                alert('មានបញ្ហាក្នុងការបញ្ជូនទិន្នន័យ! សូមពិនិត្យការតភ្ជាប់អ៊ីនធឺណិតរបស់អ្នក។ បញ្ហា៖ ' + error.message);
+            }
+        }
+        
+        // Helper function to escape HTML characters
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>
